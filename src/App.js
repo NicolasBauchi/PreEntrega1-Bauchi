@@ -1,8 +1,10 @@
 import './App.css';
+import Navbar from './components/Navbar/Navbar';
 
 function App() {
   return (
-    <div><h1>Hola mundo !!! Nicolas Bauchi</h1></div>
+   <Navbar></Navbar>
+    
   );
 }
 
