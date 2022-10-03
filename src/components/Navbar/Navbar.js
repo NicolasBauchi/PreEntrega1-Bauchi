@@ -1,19 +1,23 @@
 import React from "react";
 import logo from "../../logo.svg";
 import { estilos } from "./Navbar.estilos";
+import { CartWidget } from "./CartWidget";
 
 /* Adentro de las llaves de la funcion flecha se escribo el codigo 
 correspondiente al componente */
-const Navbar = () => {
+const Navbar = ({ nombreUsuario }) => {
     const menu = [
         { nombre: "Productos", id: 0, ruta: "#" },
         { nombre: "Nosotros", id: 1, ruta: "#" },
         { nombre: "Contacto", id: 2, ruta: "#" }];
 
     return (
-        <header>
+        <header style={estilos.container}>
 
-            <img src={logo} />
+            <img src={logo} style={estilos.imagen} />
+            <h1>Tienda Nico Bauchi React</h1>
+            <h2>Bienvenido {nombreUsuario}</h2>
+
             <nav>
                 {
                     menu.map((menu) => {
@@ -21,7 +25,7 @@ const Navbar = () => {
                     })
                 }
             </nav>
-
+            <CartWidget />
         </header>);
 
 }

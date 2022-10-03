@@ -8,7 +8,7 @@ export const estilos = {
     container: {
         display: vp.width > 769 ? "flex" : "none",
         alignItems: "center",
-        justifyContent: "space-between",
+        justifyContent: "space-evenly",
         height: 100,
         width: "100%",
     },
@@ -17,7 +17,8 @@ export const estilos = {
     },
     menus: {
         margin: 10,
-        color: "blue"
+        color: "blue",
+        textDecoration: "none"
     }
 
 
