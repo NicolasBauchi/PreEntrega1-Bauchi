@@ -15,8 +15,8 @@ const Navbar = ({ nombreUsuario }) => {
         <header style={estilos.container}>
 
             <img src={logo} style={estilos.imagen} />
-            <h1>Tienda Nico Bauchi React</h1>
-            <h2>Bienvenido {nombreUsuario}</h2>
+            <h1 style={estilos.titulos}>Tienda Nico Bauchi React</h1>
+            <h2 style={estilos.titulos}>Bienvenido {nombreUsuario}</h2>
 
             <nav>
                 {

@@ -5,8 +5,8 @@ import { ItemListContainer } from "../src/Containers/ItemListContainer"
 function App() {
   return (
     <>
-      <Navbar></Navbar>
-      <ItemListContainer></ItemListContainer>
+      <Navbar nombreUsuario={"Nicolas"}></Navbar>
+      <ItemListContainer greeting={"mensaje de ejemplo greeting"} mensaje="termine la pre entrega nro 1"></ItemListContainer>
     </>
   );
 }

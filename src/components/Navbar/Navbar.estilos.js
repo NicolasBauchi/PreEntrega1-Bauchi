@@ -11,15 +11,20 @@ export const estilos = {
         justifyContent: "space-evenly",
         height: 100,
         width: "100%",
+        backgroundColor: "#2A296A"
     },
     imagen: {
         height: "90%"
     },
     menus: {
         margin: 10,
-        color: "blue",
-        textDecoration: "none"
-    }
+        color: "#9ECCEA",
+        textDecoration: "none",
+        fontSize: 18,
+    },
+    titulos:{
+        color: "#9ECCEA"
+    },
 
 
 
