@@ -14,7 +14,7 @@ export const estilos = {
         backgroundColor: "#2A296A"
     },
     imagen: {
-        height: "90%"
+        height: 90
     },
     menus: {
         margin: 10,

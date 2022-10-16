@@ -1,7 +1,7 @@
 import React from "react";
 
 
-export const ItemListContainer = ({ greeting, mensaje }) => {
+export const ItemListContainer = ({ greeting }) => {
     const estiloListContainer = {
         color: "black",
         display: "flex",
@@ -14,7 +14,6 @@ export const ItemListContainer = ({ greeting, mensaje }) => {
     return (
         <div style={estiloListContainer}>
             <h3>{greeting}</h3>
-            <h3>{mensaje}</h3>
         </div>
     )
 
