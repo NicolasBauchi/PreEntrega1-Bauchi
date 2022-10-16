@@ -16,15 +16,15 @@ export const ItemListContainer = () => {
     const [productos, setProductos] = useState([]);
     const [cargas, setCargas] = useState(true);
 
-    const { id } = useParams();
+    const { categoryId } = useParams();
     let cat_nombre_esp = "";
-    if (id === "electronicos") {
+    if (categoryId === "electronicos") {
         cat_nombre_esp = "electronics";
-    } else if (id === "joyeria") {
+    } else if (categoryId === "joyeria") {
         cat_nombre_esp = "jewelery";
-    } else if (id === "ropa-hombre") {
+    } else if (categoryId === "ropa-hombre") {
         cat_nombre_esp = "men's clothing";
-    } else if (id === "ropa-mujer") {
+    } else if (categoryId === "ropa-mujer") {
         cat_nombre_esp = "women's clothing";
     }
 
@@ -37,7 +37,7 @@ export const ItemListContainer = () => {
         const getProductos = async () => {
 
             try {
-                const datos = await fetch(id ? URL_FULL : URL_BASE);
+                const datos = await fetch(categoryId ? URL_FULL : URL_BASE);
                 const res = await datos.json();
                 setProductos(res);
                 console.log(res);
@@ -50,15 +50,7 @@ export const ItemListContainer = () => {
         }
         getProductos();
 
-    }, [id]);
-
-    try {
-
-
-
-    } catch (error) {
-
-    }
+    }, [categoryId]);
 
     return (
         <div style={estiloListContainer}>
