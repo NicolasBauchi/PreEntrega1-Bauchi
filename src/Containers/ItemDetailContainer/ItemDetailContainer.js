@@ -11,9 +11,12 @@ export const ItemDetailContainer = ({ greeting }) => {
         const getProductos = async () => {
 
             try {
+
                 const resultado = await fetch('https://fakestoreapi.com/products/1');
                 const datos = await resultado.json();
                 setProducto(datos);
+                console.log(datos);
+                
             } catch (error) {
                 console.log(error);
             } finally {

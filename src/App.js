@@ -1,6 +1,6 @@
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
-import { ItemListContainer } from "../src/Containers/ItemListContainer"
+import { ItemListContainer } from "./Containers/ItemListContainer/ItemListContainer"
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ItemDetailContainer } from './Containers/ItemDetailContainer/ItemDetailContainer';
 import { Carro } from "./Containers/CartView/Carro"
@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-      <Navbar/>
+        <Navbar />
         <Routes>
           <Route path='/' element={<ItemListContainer greeting={mensaje} />} />
           <Route path='/categoria/:id' element={<ItemListContainer />} />
@@ -19,8 +19,6 @@ function App() {
           <Route path='*' element={<ItemListContainer />} />
         </Routes>
       </BrowserRouter>
-      
-
     </>
   );
 }
