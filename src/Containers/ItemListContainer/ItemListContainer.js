@@ -37,6 +37,7 @@ export const ItemListContainer = () => {
         const getProductos = async () => {
 
             try {
+
                 const datos = await fetch(categoryId ? URL_FULL : URL_BASE);
                 const res = await datos.json();
                 setProductos(res);
@@ -54,7 +55,7 @@ export const ItemListContainer = () => {
 
     return (
         <div style={estiloListContainer}>
-            {<>{cargas ? <h1>Cargando!!</h1> : <ItemList productos={productos} />}</>}
+            {<>{cargas ? <h1>Cargando!! itemList</h1> : <ItemList productos={productos} />}</>}
         </div>
     )
 

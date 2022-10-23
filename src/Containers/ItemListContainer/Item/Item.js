@@ -5,6 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { Link } from 'react-router-dom';
 
 export const Item = ({ producto }) => {
     const estilos = {
@@ -40,7 +41,7 @@ export const Item = ({ producto }) => {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small">Ver detalles</Button>
+                <Button size="small"><Link to={`/producto/${producto.id}`}>Ver detalles</Link></Button>
             </CardActions>
         </Card>
     );
