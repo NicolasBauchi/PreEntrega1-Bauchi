@@ -5,69 +5,80 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import ItemQuantitySelector from "../../components/ItemQuantitySelector/ItemQuantitySelector";
 
 export const ItemDetail = ({ producto }) => {
-    /* .container{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-    .img-card{
-        width: 100%;
-        height: 100%;
-    }
-    .titulo-card{
-        font-size: 20px;
-    }
-    .subtitulo-card{
-        font-size: 14px;
-        font-weight: 600;
-    }
-    .text-card{
-        font-size: 12px;
-    } */
+    let colorTexto = "#ECE0D0";
+    let colorFondoTexto = "#453A3A";
+    let colorEnlaces = "#D39E7C";
+    let colorBotones = "#80A9BC";
     const estilos = {
-        container: {
-            flexDirection: "center",
+
+        position: {
+            display: "flex",
+            flexDirection: "row",
             justifyContent: "center",
-            maxWidth: 800,
-            maxHeight: 600,
-            backgroundColor: "lightblue"
         },
-        tituloCard: { fontSize: 28 },
-        subtituloCard: { fontSize: 17, fontWeight: "600" },
-        textoCard: { fontSize: 14, color: "grey" }
+        container: {
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            width: 900,
+            height: 500,
+            backgroundColor: colorFondoTexto,
+            border: "3px solid #453A3A"
+        },
+        tituloCard: { fontSize: 28, color: colorTexto },
+        subtituloCard: { fontSize: 20, fontWeight: "600", color: colorTexto },
+        textoCard: { fontSize: 16, color: colorTexto },
+        cardImg: { height: 500, width: 400, borderRight: "1px solid #16537E" },
+        cardAction: {
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            /*  marginTop: 40, */
+            gap: 30
+        },
+        cardTypo: {
+            /*   marginTop: 40, */
+        },
+        content: {
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+        }
+
     }
-
-
-    {/* <CardActions>
-<Button size="small"><Link to={`/producto/${producto.id}`}>Ver detalles</Link></Button>
-</CardActions> */}
 
     return (
 
+        <div style={estilos.position}>
+            <Card style={estilos.container} >
+                <CardMedia
+                    component="img"
+                    alt={producto.title}
+                    height="220"
+                    image={producto.image} style={estilos.cardImg}
+                />
+                <CardContent style={estilos.content}>
+                    <Typography gutterBottom variant="h2" component="div" style={estilos.tituloCard}>
+                        {producto.title}
+                    </Typography>
+                    <Typography variant="body2" style={estilos.cardTypo}>
+                        <span style={estilos.subtituloCard}>Descripción: </span> <span style={estilos.textoCard}>{producto.description}</span>
+                    </Typography>
+                    <Typography variant="body2" style={estilos.cardTypo} >
+                        <span style={estilos.subtituloCard}>Precio: </span> <span style={estilos.textoCard}>USD${producto.price}</span>
+                    </Typography>
+                    <CardActions style={estilos.cardAction}>
+                        <ItemQuantitySelector />
+                        <Button size="medium" color="primary" variant="contained">Agregar al carrito</Button>
+                    </CardActions>
 
-        <Card style={estilos.container} >
-            <CardMedia
-                component="img"
-                alt={producto.title}
-                height="220"
-                image={producto.image} /* style={estilos.imgCard} */
-            />
-            <CardContent>
-                <Typography gutterBottom variant="h2" component="div" style={estilos.tituloCard}>
-                    {producto.title}
-                </Typography>
-                <Typography variant="body2" >
-                    <span style={estilos.subtituloCard}>Descripción: </span> <span style={estilos.textoCard}>{producto.description}</span>
-                </Typography>
-                <Typography variant="body2" >
-                    <span style={estilos.subtituloCard}>Precio: </span> <span style={estilos.textoCard}>USD${producto.price}</span>
 
-                </Typography>
-            </CardContent>
-        </Card>
-
+                </CardContent>
+            </Card>
+        </div >
     );
 
 }
