@@ -10,9 +10,6 @@ export default function ItemQuantitySelector() {
 
     function cantidadProd(operacion) {
         if (operacion === '+') {
-            if (contador !== 0) {
-
-            }
             setContador(contador + 1)
         } else {
             if (contador !== 0) {

@@ -15,6 +15,7 @@ export const ItemDetail = ({ producto }) => {
     const { agregarCarrito, cantidad } = useContext(ElContexto);
 
     const addItem = () => {
+        console.log("entro en addItem - itemDetail.js");
         agregarCarrito(producto, cantidad);
     };
 

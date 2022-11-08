@@ -44,7 +44,6 @@ export const ItemListContainer = () => {
                 const datos = await fetch(categoryId ? URL_FULL : URL_BASE);
                 const res = await datos.json();
                 setProductos(res);
-                console.log(res);
 
             } catch (error) {
                 console.log(error);
