@@ -3,7 +3,7 @@ import "./ItemDetailContainer.css";
 import { ItemDetail } from "../ItemDetail/ItemDetail";
 import { useParams } from "react-router-dom";
 
-export const ItemDetailContainer = ({ greeting }) => {
+export const ItemDetailContainer = () => {
 
     const [producto, setProducto] = useState([]);
     const [carga, setCarga] = useState(true);
@@ -31,9 +31,8 @@ export const ItemDetailContainer = ({ greeting }) => {
 
 
     return (
-        <div>
-            <h1>{greeting}</h1>
-            {<> {carga ? <h1>Cargando! itemDetail</h1> : <ItemDetail producto={producto} />}  </>}
+        <div id="itemDetailContainer">
+            {<> {carga ? <h1>Cargando...</h1> : <ItemDetail producto={producto} />}  </>}
         </div>
     )
 }

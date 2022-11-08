@@ -8,6 +8,9 @@ import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 
 export const Item = ({ producto }) => {
+    let colorTexto = "#ECE0D0";
+    let colorFondoTexto = "#453A3A";
+
     const estilos = {
         container: {
             width: window.innerHeight > 900 ? "25%" : "90%",
@@ -22,26 +25,49 @@ export const Item = ({ producto }) => {
             overflow: "hidden",
             height: 100,
         },
+        img:{
+            height: 200,
+        },
+        info:{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "start",
+            backgroundColor: colorFondoTexto,
+            color: colorTexto,
+        },
+        act:{
+            backgroundColor: colorFondoTexto,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+        },
+        enlace: {
+            textDecoration: "none",
+        },
+        subTitle: {
+            color: colorTexto,
+            fontSize: 17,
+        },
     };
 
     return (
         <Card sx={{ maxWidth: 345 }} style={estilos.container} >
-            <CardMedia
+            <CardMedia style={estilos.img}
                 component="img"
                 alt={producto.title}
                 height="140"
                 image={producto.image}
             />
-            <CardContent>
-                <Typography gutterBottom variant="h5" component="div"  style={estilos.title}>
+            <CardContent style={estilos.info}>
+                <Typography gutterBottom variant="h5" component="div" style={estilos.title}>
                     {producto.title}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2"  style={estilos.subTitle}>
                     Precio: $ {producto.price}
                 </Typography>
             </CardContent>
-            <CardActions>
-                <Button size="small"><Link to={`/producto/${producto.id}`}>Ver detalles</Link></Button>
+            <CardActions style={estilos.act}>
+            <Link style={estilos.enlace} to={`/producto/${producto.id}`}><Button size="small" color="primary" variant="contained">Ver detalles</Button></Link>
             </CardActions>
         </Card>
     );

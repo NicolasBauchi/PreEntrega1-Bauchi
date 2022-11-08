@@ -1,26 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Button } from "@mui/material";
+import { ElContexto } from "../Context/ContextApp";
 
 
 export default function ItemQuantitySelector() {
+    const { setCantidad } = useContext(ElContexto);
 
     const [contador, setContador] = useState(0);
 
     function cantidadProd(operacion) {
         if (operacion === '+') {
             if (contador !== 0) {
-                
+
             }
             setContador(contador + 1)
         } else {
             if (contador !== 0) {
                 setContador(contador - 1)
             }
-           
-        }
 
+        }
+        setCantidad(contador);
     }
-    let colorBotones = "#80A9BC";
     const estilo = {
         container: {
             width: 200,

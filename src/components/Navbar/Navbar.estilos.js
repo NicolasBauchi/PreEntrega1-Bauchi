@@ -2,8 +2,12 @@ const vp = {
     width: document.documentElement.clientWidth,
     height: document.documentElement.clientHeight
 }
+let colorTexto = "#ECE0D0";
+let colorFondoTexto = "#453A3A";
+let colorEnlaces = "#D39E7C";
 
 export const estilos = {
+    
 
     container: {
         display: vp.width > 769 ? "flex" : "none",
@@ -11,19 +15,19 @@ export const estilos = {
         justifyContent: "space-evenly",
         height: 100,
         width: "100%",
-        backgroundColor: "#2A296A"
+        backgroundColor: colorFondoTexto,
     },
     imagen: {
         height: 90
     },
     menus: {
         margin: 10,
-        color: "#9ECCEA",
         textDecoration: "none",
-        fontSize: 18,
+        fontSize: 19,
+        color: colorEnlaces,
     },
     titulos:{
-        color: "#9ECCEA"
+        color: colorTexto,
     },
 
 

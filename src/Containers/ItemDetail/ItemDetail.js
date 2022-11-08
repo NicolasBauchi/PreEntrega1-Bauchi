@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -6,12 +6,18 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import ItemQuantitySelector from "../../components/ItemQuantitySelector/ItemQuantitySelector";
+import { ElContexto } from "../../components/Context/ContextApp";
 
 export const ItemDetail = ({ producto }) => {
     let colorTexto = "#ECE0D0";
     let colorFondoTexto = "#453A3A";
-    let colorEnlaces = "#D39E7C";
-    let colorBotones = "#80A9BC";
+
+    const { agregarCarrito, cantidad } = useContext(ElContexto);
+
+    const addItem = () => {
+        agregarCarrito(producto, cantidad);
+    };
+
     const estilos = {
 
         position: {
@@ -36,7 +42,6 @@ export const ItemDetail = ({ producto }) => {
             display: "flex",
             flexDirection: "row",
             justifyContent: "center",
-            /*  marginTop: 40, */
             gap: 30
         },
         cardTypo: {
@@ -72,9 +77,8 @@ export const ItemDetail = ({ producto }) => {
                     </Typography>
                     <CardActions style={estilos.cardAction}>
                         <ItemQuantitySelector />
-                        <Button size="medium" color="primary" variant="contained">Agregar al carrito</Button>
+                        <Button size="medium" color="primary" variant="contained" onClick={() => addItem()}>Agregar al carrito</Button>
                     </CardActions>
-
 
                 </CardContent>
             </Card>

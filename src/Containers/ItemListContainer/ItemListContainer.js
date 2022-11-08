@@ -5,12 +5,15 @@ import { ItemList } from "../ItemListContainer/ItemList/ItemList";
 
 
 export const ItemListContainer = () => {
+    let colorTexto = "#ECE0D0";
     const estiloListContainer = {
         color: "black",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
+        backgroundColor: colorTexto,
+        paddingTop: 30,
     };
 
     const [productos, setProductos] = useState([]);

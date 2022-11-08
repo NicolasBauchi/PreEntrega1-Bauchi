@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../logo.svg";
+import logo from "../../store-512.png";
 import { estilos } from "./Navbar.estilos";
 import { CartWidget } from "./CartWidget";
 import { NavLink, Link } from "react-router-dom";
@@ -13,14 +13,14 @@ const Navbar = () => {
     { nombre: "Ropa de Hombre", id: 2, ruta: "/categoria/ropa-hombre" },
     { nombre: "Ropa de mujer", id: 3, ruta: "/categoria/ropa-mujer" },
   ];
-
+  
   return (
     <header style={estilos.container}>
       <Link to="/">
         <img src={logo} style={estilos.imagen} alt="Tienda" />
       </Link>
 
-      <h1 style={estilos.titulos}>Tienda Nico Bauchi React</h1>
+      <h1 style={estilos.titulos}>Tienda Nico Bauchi</h1>
       {/* <h2 style={estilos.titulos}>Bienvenido {nombreUsuario}</h2> */}
 
       <nav>
