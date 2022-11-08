@@ -19,8 +19,8 @@ export const ElProvider = ({ children }) => {
 
 
     return (
-        <Context.Provider value={{ cantidad, carrito, agregarCarrito, montoTotal, setMontoTotal }}>
+        <ElContexto.Provider value={{ cantidad, carrito, agregarCarrito, montoTotal, setMontoTotal }}>
             {children}
-        </Context.Provider>
+        </ElContexto.Provider>
     );
 };
