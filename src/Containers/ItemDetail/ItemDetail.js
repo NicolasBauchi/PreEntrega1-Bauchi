@@ -17,7 +17,9 @@ export const ItemDetail = ({ producto }) => {
     const addItem = () => {
         console.log("entro en addItem - itemDetail.js");
         agregarCarrito(producto, cantidad);
+        
     };
+    /* TENGO QUE USAR USEEFFECT PARA GUARDAR CARRITO EN ALGUN PUNTO */
 
     const estilos = {
 
