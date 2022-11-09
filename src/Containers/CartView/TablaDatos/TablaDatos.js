@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -7,19 +7,17 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { ElContexto } from '../../../components/Context/ContextApp';
+import Button from "@mui/material/Button";
 
-/* function crearDato(img, nombre, precio, cantidad, subTotal) {
-    return { img, nombre, precio, cantidad, subTotal };
-} */
-
-/* const lineas = []; */
 
 let colorTexto = "#ECE0D0";
 let colorFondoTexto = "#453A3A";
 
 export const TablaDatos = () => {
 
-    const { carrito, montoTotal } = useContext(ElContexto);
+    const { carrito, montoTotal, setFinCompra } = useContext(ElContexto);
+
+
 
     const estilosTabla = {
         posicion: {
@@ -48,40 +46,59 @@ export const TablaDatos = () => {
             fontSize: 26,
             fontWeight: "bold",
         },
+        botonDiv: {
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "right",
+            marginTop: 30,
+            marginBottom: 30,
+            width: "75%",
+        },
+        boton: {
+            paddingTop: 10,
+            paddingBottom: 10,
+        },
     };
 
     return (
-        <div style={estilosTabla.posicion}>
-            <h1 style={estilosTabla.th1}>Productos en tu carrito</h1>
-            <TableContainer component={Paper} style={estilosTabla.container}>
-                <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                    <TableHead>
-                        <TableRow>
-                            <TableCell style={estilosTabla.titulos}>Imagen</TableCell>
-                            <TableCell align="right" style={estilosTabla.titulos}>Producto</TableCell>
-                            <TableCell align="right" style={estilosTabla.titulos}>Precio</TableCell>
-                            <TableCell align="right" style={estilosTabla.titulos}>Cantidad</TableCell>
-                            <TableCell align="right" style={estilosTabla.titulos}>Sub Total</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {carrito.map((produ) => (
-                            <TableRow
-                                key={produ.id}
-                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                            >
-                                <TableCell component="th" scope="row">
-                                    <img src={produ.image} style={estilosTabla.tcImg} alt={produ.title} />
-                                </TableCell>
-                                <TableCell align="right" style={estilosTabla.items}>{produ.title}</TableCell>
-                                <TableCell align="right" style={estilosTabla.items}>${produ.price}</TableCell>
-                                <TableCell align="right" style={estilosTabla.items}>{produ.cantidad_producto}</TableCell>
-                                <TableCell align="right" style={estilosTabla.items}>${(produ.price * produ.cantidad_producto)}</TableCell>
+        <>
+            <div style={estilosTabla.posicion}>
+                <h1 style={estilosTabla.th1}>Productos en tu carrito</h1>
+                <TableContainer component={Paper} style={estilosTabla.container}>
+                    <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                        <TableHead>
+                            <TableRow>
+                                <TableCell style={estilosTabla.titulos}>Imagen</TableCell>
+                                <TableCell align="right" style={estilosTabla.titulos}>Producto</TableCell>
+                                <TableCell align="right" style={estilosTabla.titulos}>Precio</TableCell>
+                                <TableCell align="right" style={estilosTabla.titulos}>Cantidad</TableCell>
+                                <TableCell align="right" style={estilosTabla.titulos}>Sub Total</TableCell>
                             </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            </TableContainer>
-        </div>
+                        </TableHead>
+                        <TableBody>
+                            {carrito.map((produ) => (
+                                <TableRow
+                                    key={produ.id}
+                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                >
+                                    <TableCell component="th" scope="row">
+                                        <img src={produ.image} style={estilosTabla.tcImg} alt={produ.title} />
+                                    </TableCell>
+                                    <TableCell align="right" style={estilosTabla.items}>{produ.title}</TableCell>
+                                    <TableCell align="right" style={estilosTabla.items}>${produ.price}</TableCell>
+                                    <TableCell align="right" style={estilosTabla.items}>{produ.cantidad_producto}</TableCell>
+                                    <TableCell align="right" style={estilosTabla.items}>${(produ.price * produ.cantidad_producto)}</TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+                <div style={estilosTabla.botonDiv}>
+                    <Button style={estilosTabla.boton} variant="contained"
+                        onClick={() => { setFinCompra(true) }}>Proceder con la compra</Button>
+                </div>
+            </div>
+
+        </>
     );
 }
