@@ -11,9 +11,18 @@ export const ElProvider = ({ children }) => {
     const [montoTotal, setMontoTotal] = useState(0);
 
     const agregarCarrito = (producto, cantidad_producto) => {
-        console.log(producto);
+        let produ = { ...producto, cantidad_producto };
+        let carro = [];
+        carro = [...carrito];
+        carro.push(produ);
+
+        console.log(produ);
+        console.log(carro);
         console.log("cantidad: " + cantidad_producto);
-        setCarrito([...carrito, { ...producto, cantidad_producto }]);
+
+        setCarrito(carro);
+        console.log("Abajo log carrito:");
+        console.log(carrito);
         /* setCantidad(cantidad + cantidad_producto); */
         setMontoTotal(montoTotal + (cantidad_producto * producto.price));
         console.log("entro a agregar carrito context");
