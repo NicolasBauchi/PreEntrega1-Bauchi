@@ -13,8 +13,8 @@ export const Direccionform = () => {
     const estilos = {
         posicion: {
             display: "flex",
-            flexDirection: "row",
-            justifyContent: "center",
+            flexDirection: "column",
+            alignItems: "center",
         },
         container: {
             width: 600,
@@ -27,7 +27,7 @@ export const Direccionform = () => {
             display: "flex",
             flexDirection: "row",
             justifyContent: "center",
-            marginBottom: 30,
+            marginBottom: 40,
 
         },
         simpleUnidad: {
@@ -38,14 +38,15 @@ export const Direccionform = () => {
             flexDirection: "row",
             justifyContent: "center",
             gap: 20,
-            marginBottom: 30,
+            marginBottom: 40,
         },
         dobleUnidad: {
-            width: 250
+            width: 250,
         },
         boton: {
-            paddingTop: 10,
-            paddingBottom: 10,
+            paddingTop: 15,
+            paddingBottom: 15,
+            marginTop: 40,
         },
     };
 

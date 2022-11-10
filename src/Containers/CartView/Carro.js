@@ -5,9 +5,6 @@ import { TablaDatos } from "../CartView/TablaDatos/TablaDatos";
 import { Checkout } from "../CartView/CheckOut/Checkout";
 
 
-let colorTexto = "#ECE0D0";
-let colorFondoTexto = "#453A3A";
-
 export const Carro = () => {
     const { carrito, finCompra } = useContext(ElContexto);
 

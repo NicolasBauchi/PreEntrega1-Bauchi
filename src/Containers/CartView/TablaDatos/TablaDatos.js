@@ -8,6 +8,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { ElContexto } from '../../../components/Context/ContextApp';
 import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
 
 
 let colorTexto = "#ECE0D0";
@@ -48,8 +49,8 @@ export const TablaDatos = () => {
         },
         botonDiv: {
             display: "flex",
-            flexDirection: "row",
-            justifyContent: "right",
+            flexDirection: "column",
+            alignItems: "end",
             marginTop: 30,
             marginBottom: 30,
             width: "75%",
@@ -57,6 +58,11 @@ export const TablaDatos = () => {
         boton: {
             paddingTop: 10,
             paddingBottom: 10,
+            maxWidth: 300,
+        },
+        monto: {
+            width: 150,
+            marginBottom: 20,
         },
     };
 
@@ -69,10 +75,10 @@ export const TablaDatos = () => {
                         <TableHead>
                             <TableRow>
                                 <TableCell style={estilosTabla.titulos}>Imagen</TableCell>
-                                <TableCell align="right" style={estilosTabla.titulos}>Producto</TableCell>
-                                <TableCell align="right" style={estilosTabla.titulos}>Precio</TableCell>
-                                <TableCell align="right" style={estilosTabla.titulos}>Cantidad</TableCell>
-                                <TableCell align="right" style={estilosTabla.titulos}>Sub Total</TableCell>
+                                <TableCell align="center" style={estilosTabla.titulos}>Producto</TableCell>
+                                <TableCell align="center" style={estilosTabla.titulos}>Precio</TableCell>
+                                <TableCell align="center" style={estilosTabla.titulos}>Cantidad</TableCell>
+                                <TableCell align="center" style={estilosTabla.titulos}>Sub Total</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -84,16 +90,18 @@ export const TablaDatos = () => {
                                     <TableCell component="th" scope="row">
                                         <img src={produ.image} style={estilosTabla.tcImg} alt={produ.title} />
                                     </TableCell>
-                                    <TableCell align="right" style={estilosTabla.items}>{produ.title}</TableCell>
-                                    <TableCell align="right" style={estilosTabla.items}>${produ.price}</TableCell>
-                                    <TableCell align="right" style={estilosTabla.items}>{produ.cantidad_producto}</TableCell>
-                                    <TableCell align="right" style={estilosTabla.items}>${(produ.price * produ.cantidad_producto)}</TableCell>
+                                    <TableCell align="center" style={estilosTabla.items}>{produ.title}</TableCell>
+                                    <TableCell align="center" style={estilosTabla.items}>${produ.price}</TableCell>
+                                    <TableCell align="center" style={estilosTabla.items}>{produ.cantidad_producto}</TableCell>
+                                    <TableCell align="center" style={estilosTabla.items}>${(produ.price * produ.cantidad_producto)}</TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
                     </Table>
                 </TableContainer>
+
                 <div style={estilosTabla.botonDiv}>
+                    <TextField style={estilosTabla.monto} label="Total a pagar" defaultValue={"$ " + montoTotal} InputProps={{ readOnly: true }} />
                     <Button style={estilosTabla.boton} variant="contained"
                         onClick={() => { setFinCompra(true) }}>Proceder con la compra</Button>
                 </div>

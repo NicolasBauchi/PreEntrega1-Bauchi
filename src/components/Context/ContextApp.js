@@ -9,10 +9,12 @@ export const ElProvider = ({ children }) => {
     const [cantidad, setCantidad] = useState(0);
     const [carrito, setCarrito] = useState([]);
     const [montoTotal, setMontoTotal] = useState(0);
-    const [finCompra, setFinCompra] = useState(false);
-
+    
     /* Para checkout */
     const [direccionCliente, setDireccionCliente] = useState(false);
+    const [finCompra, setFinCompra] = useState(false);
+    const [confirmarCompra, setConfirmarCompra] = useState(false);
+
 
     const agregarCarrito = (producto, cantidad_producto) => {
 
@@ -62,7 +64,8 @@ export const ElProvider = ({ children }) => {
         <ElContexto.Provider value={{
             cantidad, carrito, agregarCarrito, montoTotal,
             setMontoTotal, setCantidad, finCompra, setFinCompra,
-            direccionCliente, setDireccionCliente
+            direccionCliente, setDireccionCliente,
+            setConfirmarCompra, confirmarCompra
         }}>
             {children}
         </ElContexto.Provider>

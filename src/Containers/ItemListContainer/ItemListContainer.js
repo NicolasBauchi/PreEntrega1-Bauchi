@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { ItemList } from "../ItemListContainer/ItemList/ItemList";
+import { ElContexto } from "../../components/Context/ContextApp";
 
 
-export const ItemListContainer = () => {
+export const ItemListContainer = ({ greeting }) => {
     let colorTexto = "#ECE0D0";
     const estiloListContainer = {
         color: "black",
@@ -15,6 +16,8 @@ export const ItemListContainer = () => {
         backgroundColor: colorTexto,
         paddingTop: 30,
     };
+    /* Contexto: */
+    const { setConfirmarCompra, setDireccionCliente, setFinCompra } = useContext(ElContexto);
 
     const [productos, setProductos] = useState([]);
     const [cargas, setCargas] = useState(true);
@@ -53,11 +56,21 @@ export const ItemListContainer = () => {
         }
         getProductos();
 
+        clearCheckout();
+
     }, [categoryId]);
+
+    function clearCheckout() {
+        console.log("entró a clearCheckOut");
+        setDireccionCliente(false);
+        setConfirmarCompra(false);
+        setFinCompra(false);
+    };
+
 
     return (
         <div style={estiloListContainer}>
-            {<>{cargas ? <h1>Cargando!! itemList</h1> : <ItemList productos={productos} />}</>}
+            {<>{cargas ? <h1>{greeting}  Cargando!! </h1> : <ItemList productos={productos} />}</>}
         </div>
     )
 
