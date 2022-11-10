@@ -25,17 +25,17 @@ export const Item = ({ producto }) => {
             overflow: "hidden",
             height: 100,
         },
-        img:{
+        img: {
             height: 200,
         },
-        info:{
+        info: {
             display: "flex",
             flexDirection: "column",
             alignItems: "start",
             backgroundColor: colorFondoTexto,
             color: colorTexto,
         },
-        act:{
+        act: {
             backgroundColor: colorFondoTexto,
             display: "flex",
             flexDirection: "column",
@@ -47,6 +47,11 @@ export const Item = ({ producto }) => {
         subTitle: {
             color: colorTexto,
             fontSize: 17,
+        },
+        btn: {
+            paddingTop: 10,
+            paddingBotom: 10,
+            marginBottom: 15,
         },
     };
 
@@ -62,12 +67,14 @@ export const Item = ({ producto }) => {
                 <Typography gutterBottom variant="h5" component="div" style={estilos.title}>
                     {producto.title}
                 </Typography>
-                <Typography variant="body2"  style={estilos.subTitle}>
+                <Typography variant="body2" style={estilos.subTitle}>
                     Precio: $ {producto.price}
                 </Typography>
             </CardContent>
             <CardActions style={estilos.act}>
-            <Link style={estilos.enlace} to={`/producto/${producto.id}`}><Button size="small" color="primary" variant="contained">Ver detalles</Button></Link>
+                <Link style={estilos.enlace} to={`/producto/${producto.id}`}>
+                    <Button style={estilos.btn} size="small" color="primary" variant="contained">Ver detalles</Button>
+                </Link>
             </CardActions>
         </Card>
     );

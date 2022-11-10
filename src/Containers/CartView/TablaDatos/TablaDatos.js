@@ -18,8 +18,6 @@ export const TablaDatos = () => {
 
     const { carrito, montoTotal, setFinCompra } = useContext(ElContexto);
 
-
-
     const estilosTabla = {
         posicion: {
             display: "flex",

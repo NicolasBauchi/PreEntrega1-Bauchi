@@ -14,11 +14,14 @@ export const Carro = () => {
             textAlign: "center",
         }
     }
+    useEffect(()=>{
+
+    });
     
     return (
         <>
             {finCompra == true ? <Checkout /> :
-                carrito.length > 1 ?
+                carrito.length > 0 ?
                     <TablaDatos />
                     : <h1 style={estilo.th1} >OOPS! No cargaste productos. Podés <Link to="/">volver</Link> para cargar.</h1>}
         </>

@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { ItemList } from "../ItemListContainer/ItemList/ItemList";
 import { ElContexto } from "../../components/Context/ContextApp";
+import { collection, getDocs, getFirestore, query, where } from "firebase/firestore";
 
 
 export const ItemListContainer = ({ greeting }) => {
@@ -17,7 +18,7 @@ export const ItemListContainer = ({ greeting }) => {
         paddingTop: 30,
     };
     /* Contexto: */
-    const { setConfirmarCompra, setDireccionCliente, setFinCompra } = useContext(ElContexto);
+    const { setConfirmarCompra, setDireccionCliente, setFinCompra, setCantidad } = useContext(ElContexto);
 
     const [productos, setProductos] = useState([]);
     const [cargas, setCargas] = useState(true);
@@ -34,8 +35,9 @@ export const ItemListContainer = ({ greeting }) => {
         cat_nombre_esp = "women's clothing";
     }
 
+    /* estas url son para conectar a Fakestoreapi:
     const URL_BASE = "https://fakestoreapi.com/products";
-    const URL_FULL = `${URL_BASE}/category/${cat_nombre_esp}`;
+    const URL_FULL = `${URL_BASE}/category/${cat_nombre_esp}`; */
 
 
 
@@ -44,15 +46,35 @@ export const ItemListContainer = ({ greeting }) => {
 
             try {
 
-                const datos = await fetch(categoryId ? URL_FULL : URL_BASE);
-                const res = await datos.json();
-                setProductos(res);
+                const db = getFirestore();
+                let q;
+
+                categoryId ? q = query(collection(db, "productos"), where("category", "=", categoryId)) : q = query(collection(db, "productos"));
+
+
+                getDocs(q).then((snapshot) => {
+                    setProductos(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+                });
 
             } catch (error) {
                 console.log(error);
             } finally {
                 setCargas(false);
             }
+
+            /*  Este código es para conectarse a la fakeapi directo. 
+            Es reemplazado por conexion a Firebase.
+             try {
+ 
+                 const datos = await fetch(categoryId ? URL_FULL : URL_BASE);
+                 const res = await datos.json();
+                 setProductos(res);
+ 
+             } catch (error) {
+                 console.log(error);
+             } finally {
+                 setCargas(false);
+             } */
         }
         getProductos();
 
@@ -61,10 +83,10 @@ export const ItemListContainer = ({ greeting }) => {
     }, [categoryId]);
 
     function clearCheckout() {
-        console.log("entró a clearCheckOut");
         setDireccionCliente(false);
         setConfirmarCompra(false);
         setFinCompra(false);
+        setCantidad(0);
     };
 
 

@@ -11,7 +11,6 @@ export const Checkout = () => {
     return (
         <>
             {direccionCliente == false ? <Direccionform /> : <MetodoPago/>}
-
         </>
     );
 

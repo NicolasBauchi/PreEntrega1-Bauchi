@@ -11,11 +11,10 @@ import { ElContexto } from "../../components/Context/ContextApp";
 export const ItemDetail = ({ producto }) => {
     let colorTexto = "#ECE0D0";
     let colorFondoTexto = "#453A3A";
-    
+
     const { agregarCarrito, cantidad } = useContext(ElContexto);
 
     const addItem = () => {
-        console.log("entro en addItem - itemDetail.js");
 
         agregarCarrito(producto, cantidad);
 
