@@ -24,6 +24,7 @@ export const ItemListContainer = ({ greeting }) => {
     const [cargas, setCargas] = useState(true);
 
     const { categoryId } = useParams();
+
     let cat_nombre_esp = "";
     if (categoryId === "electronicos") {
         cat_nombre_esp = "electronics";
@@ -34,7 +35,6 @@ export const ItemListContainer = ({ greeting }) => {
     } else if (categoryId === "ropa-mujer") {
         cat_nombre_esp = "women's clothing";
     }
-
     /* estas url son para conectar a Fakestoreapi:
     const URL_BASE = "https://fakestoreapi.com/products";
     const URL_FULL = `${URL_BASE}/category/${cat_nombre_esp}`; */
@@ -49,7 +49,7 @@ export const ItemListContainer = ({ greeting }) => {
                 const db = getFirestore();
                 let q;
 
-                categoryId ? q = query(collection(db, "productos"), where("category", "=", categoryId)) : q = query(collection(db, "productos"));
+                categoryId ? q = query(collection(db, "productos"), where("category", "==", cat_nombre_esp)) : q = query(collection(db, "productos"));
 
 
                 getDocs(q).then((snapshot) => {
