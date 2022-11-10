@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./ItemDetailContainer.css";
 import { ItemDetail } from "../ItemDetail/ItemDetail";
 import { useParams } from "react-router-dom";
-import { collection, getDoc, getFirestore, query, where, doc } from "firebase/firestore";
+import { collection, getDoc, getFirestore, doc } from "firebase/firestore";
 
 export const ItemDetailContainer = () => {
 
@@ -13,18 +13,16 @@ export const ItemDetailContainer = () => {
     useEffect(() => {
         const getProductos = async () => {
             const db = getFirestore();
-            let q;
 
             /* codigo conexion a FakestoreApi
             const URL = 'https://fakestoreapi.com/products/';
             const URL_ID = URL + id; */
-            console.log("tengo id -> " + id);
+
             try {
                 const docBuscar = doc(collection(db, "productos"), id);
                 /*  q = query(collection(db, "productos"), where("id", "==", id)); */
 
                 getDoc(docBuscar).then((snapshot) => {
-                    console.log(snapshot);
                     setProducto({ id: snapshot.id, ...snapshot.data() });
                 });
 

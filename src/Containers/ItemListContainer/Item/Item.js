@@ -56,11 +56,10 @@ export const Item = ({ producto }) => {
     };
 
     return (
-        <Card sx={{ maxWidth: 345 }} style={estilos.container} >
+        <Card sx={{ width: 345 }} style={estilos.container} >
             <CardMedia style={estilos.img}
                 component="img"
                 alt={producto.title}
-                height="140"
                 image={producto.image}
             />
             <CardContent style={estilos.info}>
