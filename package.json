@@ -23,6 +23,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "homepage": "https://nicolasbauchi.github.io/entregaFinal-Bauchi/",
   "eslintConfig": {
     "extends": [
       "react-app",
