@@ -15,6 +15,9 @@ export const ElProvider = ({ children }) => {
     const [finCompra, setFinCompra] = useState(false);
     const [confirmarCompra, setConfirmarCompra] = useState(false);
 
+    /* Datos del comprador */
+    const [buyer, setBuyer] = useState({});
+
 
     const agregarCarrito = (producto, cantidad_producto) => {
 
@@ -35,6 +38,23 @@ export const ElProvider = ({ children }) => {
 
     }
 
+    function eliminarProducto(id) {
+
+        let carro = [];
+        carro = [...carrito];
+
+        //Borro el producto elegido
+        const filtrado = carro.filter((item) => item.id !== id)
+        console.log(filtrado);
+        //Calculo el nuevo monto
+        var nuevoMontoTotal = 0;
+        filtrado.forEach(el => {
+            nuevoMontoTotal += (el.price * el.cantidad_producto);
+        });
+        setCarrito(filtrado);
+        setMontoTotal(nuevoMontoTotal);
+    };
+
     function isInCarrito(carro, producto) {
         let resultado = false;
         carro.forEach(p => {
@@ -54,7 +74,8 @@ export const ElProvider = ({ children }) => {
             cantidad, carrito, agregarCarrito, montoTotal,
             setMontoTotal, setCantidad, finCompra, setFinCompra,
             direccionCliente, setDireccionCliente,
-            setConfirmarCompra, confirmarCompra
+            setConfirmarCompra, confirmarCompra,
+            eliminarProducto, buyer, setBuyer
         }}>
             {children}
         </ElContexto.Provider>

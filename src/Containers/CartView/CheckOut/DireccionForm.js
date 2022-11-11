@@ -8,7 +8,21 @@ import { ElContexto } from '../../../components/Context/ContextApp';
 
 export const Direccionform = () => {
 
-    const { setDireccionCliente } = useContext(ElContexto);
+    const { setDireccionCliente, setBuyer } = useContext(ElContexto);
+
+    function pasarAComprar() {
+        const nombre = document.getElementById("txt_nombre").innerText;
+        const apellido = document.getElementById("txt_apellido").innerText;
+        const direccion = document.getElementById("txt_direccion").innerText;
+        const ciudad = document.getElementById("txt_ciudad").innerText;
+        const provincia = document.getElementById("txt_provincia").innerText;
+        const cp = document.getElementById("txt_cp").innerText;
+        const pais = document.getElementById("txt_pais").innerText;
+
+        setBuyer({ nombre, apellido, direccion, ciudad, provincia, cp, pais });
+
+        setDireccionCliente(true);
+    };
 
     const estilos = {
         posicion: {
@@ -56,25 +70,25 @@ export const Direccionform = () => {
 
                 <h1>Dirección de envío</h1>
                 <div style={estilos.doble}>
-                    <TextField id="" label="Nombre" variant="standard" style={estilos.dobleUnidad} />
-                    <TextField id="" label="Apellido" variant="standard" style={estilos.dobleUnidad} />
+                    <TextField id="txt_nombre" className='txt' required label="Nombre" variant="standard" style={estilos.dobleUnidad} />
+                    <TextField id="txt_apellido" className='txt' required label="Apellido" variant="standard" style={estilos.dobleUnidad} />
                 </div>
 
                 <div style={estilos.simple}>
-                    <TextField id="" label="Direccion" variant="standard" style={estilos.simpleUnidad} />
+                    <TextField id="txt_direccion" className='txt' required label="Direccion" variant="standard" style={estilos.simpleUnidad} />
                 </div>
 
                 <div style={estilos.doble}>
-                    <TextField id="" label="Ciudad" variant="standard" style={estilos.dobleUnidad} />
-                    <TextField id="" label="Provincia" variant="standard" style={estilos.dobleUnidad} />
+                    <TextField id="txt_ciudad" className='txt' required label="Ciudad" variant="standard" style={estilos.dobleUnidad} />
+                    <TextField id="txt_provincia" className='txt' label="Provincia" variant="standard" style={estilos.dobleUnidad} />
                 </div>
 
                 <div style={estilos.doble}>
-                    <TextField id="" label="Codigo postal" variant="standard" style={estilos.dobleUnidad} />
-                    <TextField id="" label="Pais" variant="standard" style={estilos.dobleUnidad} />
+                    <TextField id="txt_cp" className='txt' label="Codigo postal" variant="standard" style={estilos.dobleUnidad} />
+                    <TextField id="txt_pais" className='txt' required label="Pais" variant="standard" style={estilos.dobleUnidad} />
                 </div>
             </Paper>
-            <Button style={estilos.boton} variant="contained" onClick={() => { setDireccionCliente(true) }}>Siguiente</Button>
+            <Button style={estilos.boton} variant="contained" onClick={() => { pasarAComprar() }}>Siguiente</Button>
         </div>
 
     );

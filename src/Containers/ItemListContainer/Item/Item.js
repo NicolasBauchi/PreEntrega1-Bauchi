@@ -13,12 +13,12 @@ export const Item = ({ producto }) => {
 
     const estilos = {
         container: {
-            width: window.innerHeight > 900 ? "25%" : "90%",
+            width: window.innerWidth > 900 ? 400 : 340,
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
             margin: 20,
-            backgroundColor: "rgba(249, 220, 92, 0.3)",
+            minWidth: 340,
         },
         title: {
             textOverflow: "ellipsis",
@@ -56,7 +56,7 @@ export const Item = ({ producto }) => {
     };
 
     return (
-        <Card sx={{ width: 345 }} style={estilos.container} >
+        <Card style={estilos.container} >
             <CardMedia style={estilos.img}
                 component="img"
                 alt={producto.title}

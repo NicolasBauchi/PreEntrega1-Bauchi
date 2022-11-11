@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -9,6 +9,7 @@ import Paper from '@mui/material/Paper';
 import { ElContexto } from '../../../components/Context/ContextApp';
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
+import { BotonBorrar } from "../../../components/BotonBorrar/BotonBorrar";
 
 
 let colorTexto = "#ECE0D0";
@@ -17,6 +18,7 @@ let colorFondoTexto = "#453A3A";
 export const TablaDatos = () => {
 
     const { carrito, montoTotal, setFinCompra } = useContext(ElContexto);
+    const [montoFinal, setMontoFinal] = useState(montoTotal);
 
     const estilosTabla = {
         posicion: {
@@ -77,14 +79,14 @@ export const TablaDatos = () => {
                                 <TableCell align="center" style={estilosTabla.titulos}>Precio</TableCell>
                                 <TableCell align="center" style={estilosTabla.titulos}>Cantidad</TableCell>
                                 <TableCell align="center" style={estilosTabla.titulos}>Sub Total</TableCell>
+                                <TableCell align="center" style={estilosTabla.titulos}>Acciones</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
                             {carrito.map((produ) => (
                                 <TableRow
                                     key={produ.id}
-                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                >
+                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                                     <TableCell component="th" scope="row">
                                         <img src={produ.image} style={estilosTabla.tcImg} alt={produ.title} />
                                     </TableCell>
@@ -92,6 +94,7 @@ export const TablaDatos = () => {
                                     <TableCell align="center" style={estilosTabla.items}>${produ.price}</TableCell>
                                     <TableCell align="center" style={estilosTabla.items}>{produ.cantidad_producto}</TableCell>
                                     <TableCell align="center" style={estilosTabla.items}>${(produ.price * produ.cantidad_producto)}</TableCell>
+                                    <TableCell align="center" style={estilosTabla.items}><BotonBorrar idItem={produ.id} /></TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
@@ -99,7 +102,9 @@ export const TablaDatos = () => {
                 </TableContainer>
 
                 <div style={estilosTabla.botonDiv}>
-                    <TextField style={estilosTabla.monto} label="Total a pagar" defaultValue={"$ " + montoTotal} InputProps={{ readOnly: true }} />
+                    <TextField style={estilosTabla.monto} label="Total a pagar"
+                        defaultValue={"$ " + montoFinal.toFixed(2)} InputProps={{ readOnly: true }} />
+
                     <Button style={estilosTabla.boton} variant="contained"
                         onClick={() => { setFinCompra(true) }}>Proceder con la compra</Button>
                 </div>
