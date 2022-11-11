@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/entregaFinal-Bauchi/static/css/main.d2027c62.css",
-    "main.js": "/entregaFinal-Bauchi/static/js/main.2de367cf.js",
+    "main.js": "/entregaFinal-Bauchi/static/js/main.74266343.js",
     "static/media/store-512.png": "/entregaFinal-Bauchi/static/media/store-512.fdfbad4748f3f4460571.png",
     "index.html": "/entregaFinal-Bauchi/index.html",
     "main.d2027c62.css.map": "/entregaFinal-Bauchi/static/css/main.d2027c62.css.map",
-    "main.2de367cf.js.map": "/entregaFinal-Bauchi/static/js/main.2de367cf.js.map"
+    "main.74266343.js.map": "/entregaFinal-Bauchi/static/js/main.74266343.js.map"
   },
   "entrypoints": [
     "static/css/main.d2027c62.css",
-    "static/js/main.2de367cf.js"
+    "static/js/main.74266343.js"
   ]
 }
