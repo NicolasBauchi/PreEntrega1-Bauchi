@@ -34,7 +34,7 @@ export const ElProvider = ({ children }) => {
 
         setCarrito(carro);
 
-        setMontoTotal(montoTotal + (cantidad_producto * producto.price));
+        setMontoTotal(parseFloat((montoTotal + (cantidad_producto * producto.price)).toFixed(2)));
 
     }
 

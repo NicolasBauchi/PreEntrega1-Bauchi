@@ -18,7 +18,7 @@ let colorFondoTexto = "#453A3A";
 export const TablaDatos = () => {
 
     const { carrito, montoTotal, setFinCompra } = useContext(ElContexto);
-    const [montoFinal, setMontoFinal] = useState(montoTotal);
+
 
     const estilosTabla = {
         posicion: {
@@ -103,7 +103,7 @@ export const TablaDatos = () => {
 
                 <div style={estilosTabla.botonDiv}>
                     <TextField style={estilosTabla.monto} label="Total a pagar"
-                        defaultValue={"$ " + montoFinal.toFixed(2)} InputProps={{ readOnly: true }} />
+                        defaultValue={"$ " + montoTotal.toFixed(2)} InputProps={{ readOnly: true }} />
 
                     <Button style={estilosTabla.boton} variant="contained"
                         onClick={() => { setFinCompra(true) }}>Proceder con la compra</Button>

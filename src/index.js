@@ -5,6 +5,13 @@ import App from './App';
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
+  /* apiKey: process.env.API_KEY,
+  authDomain: process.env.AUTHDOMAIN,
+  projectId: process.env.PROJECTID,
+  storageBucket: process.env.STORAGEBUCKET,
+  messagingSenderId: process.env.MESSAGINGSENDERID,
+  appId: process.env.APPID */
+
   apiKey: "AIzaSyADmeLuR10N7uoW_N5qcVjQ-AStn6rUJGE",
   authDomain: "ecommercereact-98454.firebaseapp.com",
   projectId: "ecommercereact-98454",
