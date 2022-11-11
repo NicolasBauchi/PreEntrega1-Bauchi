@@ -10,14 +10,41 @@ export const Direccionform = () => {
 
     const { setDireccionCliente, setBuyer } = useContext(ElContexto);
 
+    var nombre = "";
+    var apellido = "";
+    var direccion = "";
+    var ciudad = "";
+    var provincia = "";
+    var cp = "";
+    var pais = "";
+
+
+    function handlerNombre(event) {
+        nombre = event.target.value;
+    }
+    function handlerApellido(event) {
+        apellido = event.target.value;
+    }
+    function handlerDireccion(event) {
+        direccion = event.target.value;
+    }
+    function handlerCiudad(event) {
+        ciudad = event.target.value;
+    }
+    function handlerProvincia(event) {
+        provincia = event.target.value;
+    }
+    function handlerCp(event) {
+        cp = event.target.value;
+    }
+    function handlerPais(event) {
+        pais = event.target.value;
+    }
+
+
+
     function pasarAComprar() {
-        const nombre = document.getElementById("txt_nombre").innerText;
-        const apellido = document.getElementById("txt_apellido").innerText;
-        const direccion = document.getElementById("txt_direccion").innerText;
-        const ciudad = document.getElementById("txt_ciudad").innerText;
-        const provincia = document.getElementById("txt_provincia").innerText;
-        const cp = document.getElementById("txt_cp").innerText;
-        const pais = document.getElementById("txt_pais").innerText;
+
 
         setBuyer({ nombre, apellido, direccion, ciudad, provincia, cp, pais });
 
@@ -70,22 +97,32 @@ export const Direccionform = () => {
 
                 <h1>Dirección de envío</h1>
                 <div style={estilos.doble}>
-                    <TextField id="txt_nombre" className='txt' required label="Nombre" variant="standard" style={estilos.dobleUnidad} />
-                    <TextField id="txt_apellido" className='txt' required label="Apellido" variant="standard" style={estilos.dobleUnidad} />
+                    <TextField id="txt_nombre" onChange={(event) => { handlerNombre(event) }}
+                        required label="Nombre" variant="standard" style={estilos.dobleUnidad} />
+
+                    <TextField id="txt_apellido" onChange={(event) => { handlerApellido(event) }}
+                        required label="Apellido" variant="standard" style={estilos.dobleUnidad} />
                 </div>
 
                 <div style={estilos.simple}>
-                    <TextField id="txt_direccion" className='txt' required label="Direccion" variant="standard" style={estilos.simpleUnidad} />
+                    <TextField id="txt_direccion" onChange={(event) => { handlerDireccion(event) }}
+                        required label="Direccion" variant="standard" style={estilos.simpleUnidad} />
                 </div>
 
                 <div style={estilos.doble}>
-                    <TextField id="txt_ciudad" className='txt' required label="Ciudad" variant="standard" style={estilos.dobleUnidad} />
-                    <TextField id="txt_provincia" className='txt' label="Provincia" variant="standard" style={estilos.dobleUnidad} />
+                    <TextField id="txt_ciudad" onChange={(event) => { handlerCiudad(event) }}
+                        required label="Ciudad" variant="standard" style={estilos.dobleUnidad} />
+
+                    <TextField id="txt_provincia" onChange={(event) => { handlerProvincia(event) }}
+                        label="Provincia" variant="standard" style={estilos.dobleUnidad} />
                 </div>
 
                 <div style={estilos.doble}>
-                    <TextField id="txt_cp" className='txt' label="Codigo postal" variant="standard" style={estilos.dobleUnidad} />
-                    <TextField id="txt_pais" className='txt' required label="Pais" variant="standard" style={estilos.dobleUnidad} />
+                    <TextField id="txt_cp" onChange={(event) => { handlerCp(event) }}
+                        label="Codigo postal" variant="standard" style={estilos.dobleUnidad} />
+
+                    <TextField id="txt_pais" onChange={(event) => { handlerPais(event) }}
+                        required label="Pais" variant="standard" style={estilos.dobleUnidad} />
                 </div>
             </Paper>
             <Button style={estilos.boton} variant="contained" onClick={() => { pasarAComprar() }}>Siguiente</Button>
