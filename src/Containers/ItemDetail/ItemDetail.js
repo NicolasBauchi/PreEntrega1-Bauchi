@@ -20,8 +20,6 @@ export const ItemDetail = ({ producto }) => {
 
     };
 
-    /* TENGO QUE USAR USEEFFECT PARA GUARDAR CARRITO EN ALGUN PUNTO */
-
     const estilos = {
 
         position: {
@@ -81,7 +79,8 @@ export const ItemDetail = ({ producto }) => {
                     </Typography>
                     <CardActions style={estilos.cardAction}>
                         <ItemQuantitySelector />
-                        <Button size="medium" color="primary" variant="contained" onClick={() => addItem()}>Agregar al carrito</Button>
+                        <Button size="medium" color="primary" variant="contained"
+                         onClick={() => cantidad > 0 ? addItem() : alert("La cantidad elegida debe ser mayor a cero \n para agregar al carrito")}>Agregar al carrito</Button>
                     </CardActions>
 
                 </CardContent>
