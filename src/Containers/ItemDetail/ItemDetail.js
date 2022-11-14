@@ -15,9 +15,8 @@ export const ItemDetail = ({ producto }) => {
     const { agregarCarrito, cantidad } = useContext(ElContexto);
 
     const addItem = () => {
-
+        alert("Producto agregado al carrito!");
         agregarCarrito(producto, cantidad);
-
     };
 
     const estilos = {
@@ -80,7 +79,7 @@ export const ItemDetail = ({ producto }) => {
                     <CardActions style={estilos.cardAction}>
                         <ItemQuantitySelector />
                         <Button size="medium" color="primary" variant="contained"
-                         onClick={() => cantidad > 0 ? addItem() : alert("La cantidad elegida debe ser mayor a cero \n para agregar al carrito")}>Agregar al carrito</Button>
+                            onClick={() => cantidad > 0 ? addItem() : alert("La cantidad elegida debe ser mayor a cero \n para agregar al carrito")}>Agregar al carrito</Button>
                     </CardActions>
 
                 </CardContent>

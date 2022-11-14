@@ -9,15 +9,20 @@ import { ElContexto } from "../Context/ContextApp";
 correspondiente al componente */
 const Navbar = () => {
 
-  const { carrito } = useContext(ElContexto);
+  const { cantProd } = useContext(ElContexto);
 
   const estiloCart = {
     number: {
       color: "white",
-      fontSize: 15,
+      fontSize: 16,
       backgroundColor: "red",
-      padding: 5,
+      paddingRight: 5,
+      paddingLeft: 5,
+      borderRadius: 5,
       fontWeight: "bold",
+      textDecoration: "none",
+      display: "inline",
+      justifyContent: "center",
     }
   }
 
@@ -50,7 +55,7 @@ const Navbar = () => {
       <Link to="/carrito">
         <>
           <CartWidget />
-          {carrito.size > 0 ? <span style={estiloCart.number}>{carrito.size}</span> : null}
+          {cantProd > 0 ? <span style={estiloCart.number}>{cantProd}</span> : null}
         </>
       </Link>
     </header>
