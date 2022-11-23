@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Paper from "@mui/material/Paper";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -7,8 +7,10 @@ import { ElContexto } from '../../../components/Context/ContextApp';
 
 
 export const Direccionform = () => {
+    const [confirmacion, setConfirmacion] = useState(false);
 
-    const { setDireccionCliente, setBuyer } = useContext(ElContexto);
+    const { setDireccionCliente, setBuyer, correoConfirm, setCorreoConfirm, correo, setCorreo } = useContext(ElContexto);
+
 
     var nombre = "";
     var apellido = "";
@@ -25,6 +27,18 @@ export const Direccionform = () => {
     function handlerApellido(event) {
         apellido = event.target.value;
     }
+
+    function handlerCorreo(event) {
+        setCorreo(event.target.value);
+        correo == correoConfirm ? setConfirmacion(true) : setConfirmacion(false);
+    }
+    function handlerCorreoConfirm(event) {
+        setCorreoConfirm(event.target.value);
+
+        correo == correoConfirm ? setConfirmacion(true) : setConfirmacion(false);
+
+    }
+
     function handlerDireccion(event) {
         direccion = event.target.value;
     }
@@ -46,9 +60,15 @@ export const Direccionform = () => {
     function pasarAComprar() {
 
 
-        setBuyer({ nombre, apellido, direccion, ciudad, provincia, cp, pais });
+        if (confirmacion == true) {
+            setBuyer({ nombre, apellido, correo, direccion, ciudad, provincia, cp, pais });
 
-        setDireccionCliente(true);
+            setDireccionCliente(true);
+        } else {
+            alert("Revisa los datos ingresados.");
+        }
+
+
     };
 
     const estilos = {
@@ -102,6 +122,15 @@ export const Direccionform = () => {
 
                     <TextField id="txt_apellido" onChange={(event) => { handlerApellido(event) }}
                         required label="Apellido" variant="standard" style={estilos.dobleUnidad} />
+                </div>
+
+                <div style={estilos.doble}>
+                    <TextField id="txt_correo" onChange={(event) => { handlerCorreo(event) }}
+                        required label="Correo" variant="standard" style={estilos.dobleUnidad} />
+
+                    <TextField id="txt_correoConfirmar" color={correoConfirm === '' ? "primary" : confirmacion === false ? "warning" : "success"}
+                        onChange={(event) => { handlerCorreoConfirm(event) }} onBlur={(event) => { handlerCorreoConfirm(event) }}
+                        required label="Confirmar correo" variant="standard" style={estilos.dobleUnidad} />
                 </div>
 
                 <div style={estilos.simple}>

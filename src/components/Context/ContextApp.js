@@ -17,6 +17,11 @@ export const ElProvider = ({ children }) => {
     const [finCompra, setFinCompra] = useState(false);
     const [confirmarCompra, setConfirmarCompra] = useState(false);
 
+    /* Correos */
+    const [correo, setCorreo] = useState(false);
+    const [correoConfirm, setCorreoConfirm] = useState(false);
+
+    
     /* Datos del comprador */
     const [buyer, setBuyer] = useState({});
 
@@ -79,7 +84,7 @@ export const ElProvider = ({ children }) => {
             direccionCliente, setDireccionCliente,
             setConfirmarCompra, confirmarCompra,
             eliminarProducto, buyer, setBuyer,
-            cantProd, setCantProd
+            cantProd, setCantProd, correoConfirm, setCorreoConfirm, correo, setCorreo
         }}>
             {children}
         </ElContexto.Provider>

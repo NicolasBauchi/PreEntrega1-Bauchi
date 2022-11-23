@@ -20,10 +20,9 @@ export const ItemDetailContainer = () => {
 
             try {
                 const docBuscar = doc(collection(db, "productos"), id);
-                /*  q = query(collection(db, "productos"), where("id", "==", id)); */
 
-                getDoc(docBuscar).then((snapshot) => {
-                    setProducto({ id: snapshot.id, ...snapshot.data() });
+                getDoc(docBuscar).then((prod) => {
+                    setProducto({ id: prod.id, ...prod.data() });
                 });
 
             } catch (error) {
@@ -54,7 +53,10 @@ export const ItemDetailContainer = () => {
 
     return (
         <div id="itemDetailContainer">
-            {<> {carga ? <h1>Cargando...</h1> : <ItemDetail producto={producto} />}  </>}
+            {<>
+                {carga ?
+                    <h1>Cargando...</h1> : <ItemDetail producto={producto} /> }
+            </>}
         </div>
     )
 }
