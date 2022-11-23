@@ -7,11 +7,12 @@ import { ElContexto } from '../../../components/Context/ContextApp';
 
 
 export const Direccionform = () => {
-    const [confirmacion, setConfirmacion] = useState(false);
+    /* const [confirmacion, setConfirmacion] = useState(false); */
 
-    const { setDireccionCliente, setBuyer, correoConfirm, setCorreoConfirm, correo, setCorreo } = useContext(ElContexto);
+    const { setDireccionCliente, setBuyer } = useContext(ElContexto);
+    /* , correoConfirm, setCorreoConfirm, correo, setCorreo */
 
-
+    var confirmacion = false;
     var nombre = "";
     var apellido = "";
     var direccion = "";
@@ -19,6 +20,8 @@ export const Direccionform = () => {
     var provincia = "";
     var cp = "";
     var pais = "";
+    var correo = "";
+    var correoConfirm = "";
 
 
     function handlerNombre(event) {
@@ -29,13 +32,18 @@ export const Direccionform = () => {
     }
 
     function handlerCorreo(event) {
-        setCorreo(event.target.value);
-        correo == correoConfirm ? setConfirmacion(true) : setConfirmacion(false);
+        correo = event.target.value;
+        /* setCorreo(event.target.value); */
+
+        /*  correo == correoConfirm ? setConfirmacion(true) : setConfirmacion(false); */
+        correo == correoConfirm ? confirmacion = true : confirmacion = false;
     }
     function handlerCorreoConfirm(event) {
-        setCorreoConfirm(event.target.value);
+        correoConfirm = event.target.value;
+        /* setCorreoConfirm(event.target.value); */
 
-        correo == correoConfirm ? setConfirmacion(true) : setConfirmacion(false);
+        /*  correo == correoConfirm ? setConfirmacion(true) : setConfirmacion(false); */
+        correo == correoConfirm ? confirmacion = true : confirmacion = false;
 
     }
 
@@ -128,8 +136,8 @@ export const Direccionform = () => {
                     <TextField id="txt_correo" onChange={(event) => { handlerCorreo(event) }}
                         required label="Correo" variant="standard" style={estilos.dobleUnidad} />
 
-                    <TextField id="txt_correoConfirmar" color={correoConfirm === '' ? "primary" : confirmacion === false ? "warning" : "success"}
-                        onChange={(event) => { handlerCorreoConfirm(event) }} onBlur={(event) => { handlerCorreoConfirm(event) }}
+                    <TextField id="txt_correoConfirmar" /* color={correoConfirm === '' ? "primary" : confirmacion === false ? "warning" : "success"} */
+                        onChange={(event) => { handlerCorreoConfirm(event) }}
                         required label="Confirmar correo" variant="standard" style={estilos.dobleUnidad} />
                 </div>
 
