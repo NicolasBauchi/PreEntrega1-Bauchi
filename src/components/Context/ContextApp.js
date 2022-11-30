@@ -58,14 +58,15 @@ export const ElProvider = ({ children }) => {
 
         //Borro el producto elegido
         const filtrado = carro.filter((item) => item.id !== id)
-        console.log(filtrado);
         //Calculo el nuevo monto
         var nuevoMontoTotal = 0;
         filtrado.forEach(el => {
             nuevoMontoTotal += (el.price * el.cantidad_producto);
         });
+
         setCarrito(filtrado);
         setMontoTotal(nuevoMontoTotal);
+        setCantProd(filtrado.length);
     };
 
     function isInCarrito(carro, producto) {

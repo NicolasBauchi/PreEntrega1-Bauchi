@@ -1,16 +1,15 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import logo from "../../store-512.png";
 import { estilos } from "./Navbar.estilos";
 import { CartWidget } from "./CartWidget";
 import { NavLink, Link } from "react-router-dom";
 import { ElContexto } from "../Context/ContextApp";
 
-/* Adentro de las llaves de la funcion flecha se escribo el codigo 
+/* Adentro de las llaves de la funcion flecha se escribe el codigo 
 correspondiente al componente */
 const Navbar = () => {
 
   const { cantProd } = useContext(ElContexto);
-  /* const [number, setNumber] = useState(cantProd); */
 
   const estiloCart = {
     number: {
@@ -27,12 +26,13 @@ const Navbar = () => {
     }
   }
 
-  const menu = [
-    { nombre: "Electronicos", id: 0, ruta: "/categoria/electronicos" },
-    { nombre: "Joyeria", id: 1, ruta: "/categoria/joyeria" },
-    { nombre: "Ropa de Hombre", id: 2, ruta: "/categoria/ropa-hombre" },
-    { nombre: "Ropa de mujer", id: 3, ruta: "/categoria/ropa-mujer" },
-  ];
+
+   const menu = [
+     { nombre: "Electronicos", id: 0, ruta: "/categoria/electronicos" },
+     { nombre: "Joyeria", id: 1, ruta: "/categoria/joyeria" },
+     { nombre: "Ropa de Hombre", id: 2, ruta: "/categoria/ropa-hombre" },
+     { nombre: "Ropa de mujer", id: 3, ruta: "/categoria/ropa-mujer" },
+   ];
 
   return (
     <header style={estilos.container}>

@@ -35,11 +35,6 @@ export const ItemListContainer = ({ greeting }) => {
     } else if (categoryId === "ropa-mujer") {
         cat_nombre_esp = "women's clothing";
     }
-    /* estas url son para conectar a Fakestoreapi:
-    const URL_BASE = "https://fakestoreapi.com/products";
-    const URL_FULL = `${URL_BASE}/category/${cat_nombre_esp}`; */
-
-
 
     useEffect(() => {
         const getProductos = async () => {
@@ -61,26 +56,13 @@ export const ItemListContainer = ({ greeting }) => {
             } finally {
                 setCargas(false);
             }
-
-            /*  Este código es para conectarse a la fakeapi directo. 
-            Es reemplazado por conexion a Firebase.
-             try {
- 
-                 const datos = await fetch(categoryId ? URL_FULL : URL_BASE);
-                 const res = await datos.json();
-                 setProductos(res);
- 
-             } catch (error) {
-                 console.log(error);
-             } finally {
-                 setCargas(false);
-             } */
         }
         getProductos();
 
         clearCheckout();
 
     }, [categoryId]);
+
 
     function clearCheckout() {
         setDireccionCliente(false);

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -7,15 +7,18 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import ItemQuantitySelector from "../../components/ItemQuantitySelector/ItemQuantitySelector";
 import { ElContexto } from "../../components/Context/ContextApp";
+import { Link } from "react-router-dom";
 
 export const ItemDetail = ({ producto }) => {
     let colorTexto = "#ECE0D0";
     let colorFondoTexto = "#453A3A";
 
     const { agregarCarrito, cantidad } = useContext(ElContexto);
+    const [prueba, setPrueba] = useState(false);
 
     const addItem = () => {
         agregarCarrito(producto, cantidad);
+        setPrueba(true);
     };
 
     const estilos = {
@@ -51,7 +54,12 @@ export const ItemDetail = ({ producto }) => {
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
-        }
+        },
+        linkTo: {
+            textDecoration: "none",
+            color: "white",
+
+        },
 
     }
 
@@ -79,7 +87,17 @@ export const ItemDetail = ({ producto }) => {
                         <ItemQuantitySelector />
                         <Button size="medium" color="primary" variant="contained"
                             onClick={() => cantidad > 0 ? addItem() : alert("La cantidad elegida debe ser mayor a cero \n para agregar al carrito")}>Agregar al carrito</Button>
+
                     </CardActions>
+                    <>
+                        {prueba == true ?
+
+                            <Button size="medium" color="primary" variant="contained" >
+                                <Link style={estilos.linkTo} to="/carrito">Finalizar compra</Link>
+                            </Button>
+
+                            : null}
+                    </>
 
                 </CardContent>
             </Card>

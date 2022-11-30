@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -17,7 +17,7 @@ let colorFondoTexto = "#453A3A";
 
 export const TablaDatos = () => {
 
-    const { carrito, montoTotal, setFinCompra } = useContext(ElContexto);
+    const { carrito, montoTotal, setFinCompra, vaciarCarrito } = useContext(ElContexto);
 
 
     const estilosTabla = {
@@ -54,6 +54,11 @@ export const TablaDatos = () => {
             marginTop: 30,
             marginBottom: 30,
             width: "75%",
+        },
+        botonDivDentro: {
+            display: "flex",
+            flexDirection: "row",
+            gap: 15,
         },
         boton: {
             paddingTop: 10,
@@ -105,8 +110,14 @@ export const TablaDatos = () => {
                     <TextField style={estilosTabla.monto} label="Total a pagar"
                         defaultValue={"$ " + montoTotal.toFixed(2)} InputProps={{ readOnly: true }} />
 
-                    <Button style={estilosTabla.boton} variant="contained"
-                        onClick={() => { setFinCompra(true) }}>Proceder con la compra</Button>
+                    <div style={estilosTabla.botonDivDentro}>
+                        <Button style={estilosTabla.boton} color="error" variant="contained"
+                            onClick={() => { vaciarCarrito() }}>Vaciar carrito de compras</Button>
+
+                        <Button style={estilosTabla.boton} variant="contained"
+                            onClick={() => { setFinCompra(true) }}>Proceder con la compra</Button>
+
+                    </div>
                 </div>
             </div>
 

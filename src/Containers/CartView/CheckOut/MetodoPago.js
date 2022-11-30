@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react';
+import React, { useContext } from 'react';
 import Paper from "@mui/material/Paper";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -64,7 +64,7 @@ export const MetodoPago = () => {
             };
             const db = getFirestore();
             const ordersCollection = collection(db, "ordenes");
-            /* const realizado =  */
+            
             addDoc(ordersCollection, ordenDeCompra).then(({ id }) => {
                 alert("Se realizó la compra con el ID:  " + id);
             });

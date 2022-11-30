@@ -36,7 +36,7 @@ export const ItemDetailContainer = () => {
         <div id="itemDetailContainer">
             {<>
                 {carga ?
-                    <h1>Cargando...</h1> : <ItemDetail producto={producto} /> }
+                    <h1>Cargando...</h1> : <ItemDetail producto={producto} />}
             </>}
         </div>
     )
