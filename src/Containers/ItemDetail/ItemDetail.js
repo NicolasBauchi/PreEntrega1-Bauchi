@@ -84,20 +84,25 @@ export const ItemDetail = ({ producto }) => {
                         <span style={estilos.subtituloCard}>Precio: </span> <span style={estilos.textoCard}>USD${producto.price}</span>
                     </Typography>
                     <CardActions style={estilos.cardAction}>
-                        <ItemQuantitySelector />
-                        <Button size="medium" color="primary" variant="contained"
-                            onClick={() => cantidad > 0 ? addItem() : alert("La cantidad elegida debe ser mayor a cero \n para agregar al carrito")}>Agregar al carrito</Button>
+                        <>
+                            {prueba == true ?
+
+                                <Button size="medium" color="primary" variant="contained" >
+                                    <Link style={estilos.linkTo} to="/carrito">Finalizar compra</Link>
+                                </Button>
+
+                                :
+                                <>
+                                    <ItemQuantitySelector />
+                                    <Button size="medium" color="primary" variant="contained"
+                                        onClick={() => cantidad > 0 ? addItem() : alert("La cantidad elegida debe ser mayor a cero \n para agregar al carrito")}>Agregar al carrito</Button>
+                                </>
+
+                            }
+                        </>
 
                     </CardActions>
-                    <>
-                        {prueba == true ?
 
-                            <Button size="medium" color="primary" variant="contained" >
-                                <Link style={estilos.linkTo} to="/carrito">Finalizar compra</Link>
-                            </Button>
-
-                            : null}
-                    </>
 
                 </CardContent>
             </Card>
