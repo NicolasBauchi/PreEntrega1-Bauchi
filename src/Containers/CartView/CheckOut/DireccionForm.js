@@ -40,9 +40,7 @@ export const Direccionform = () => {
     }
     function handlerCorreoConfirm(event) {
         correoConfirm = event.target.value;
-        /* setCorreoConfirm(event.target.value); */
 
-        /*  correo == correoConfirm ? setConfirmacion(true) : setConfirmacion(false); */
         correo == correoConfirm ? confirmacion = true : confirmacion = false;
 
     }
@@ -66,9 +64,33 @@ export const Direccionform = () => {
 
 
     function pasarAComprar() {
+        /* Método para revisar campos completos */
+        let camposCompletos = false;
 
 
-        if (confirmacion == true) {
+        let datosFormulario = [
+            nombre,
+            apellido,
+            direccion,
+            ciudad,
+            provincia,
+            cp,
+            pais,
+            correo,
+            correoConfirm
+        ]
+
+        let cont = 0;
+        datosFormulario.forEach(el => {
+            if (el == "") {
+                cont++;
+            }
+        });
+
+        cont == 0 ? camposCompletos = true : camposCompletos = false;
+        /* Fin comprobación campos. */
+
+        if (confirmacion == true && camposCompletos == true) {
             setBuyer({ nombre, apellido, correo, direccion, ciudad, provincia, cp, pais });
 
             setDireccionCliente(true);
