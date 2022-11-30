@@ -69,6 +69,9 @@ export const Item = ({ producto }) => {
                 <Typography variant="body2" style={estilos.subTitle}>
                     Precio: $ {producto.price}
                 </Typography>
+                <Typography variant="body2" style={estilos.subTitle}>
+                    Stock disponible: {producto.stock} unidades
+                </Typography>
             </CardContent>
             <CardActions style={estilos.act}>
                 <Link style={estilos.enlace} to={`/producto/${producto.id}`}>

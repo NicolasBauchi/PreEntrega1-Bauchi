@@ -81,7 +81,10 @@ export const ItemDetail = ({ producto }) => {
                         <span style={estilos.subtituloCard}>Descripción: </span> <span style={estilos.textoCard}>{producto.description}</span>
                     </Typography>
                     <Typography variant="body2" style={estilos.cardTypo} >
-                        <span style={estilos.subtituloCard}>Precio: </span> <span style={estilos.textoCard}>USD${producto.price}</span>
+                        <span style={estilos.subtituloCard}>Precio: </span> <span style={estilos.textoCard}>USD$ {producto.price}</span>
+                    </Typography>
+                    <Typography variant="body2" style={estilos.cardTypo} >
+                        <span style={estilos.subtituloCard}>Stock disponible: </span> <span style={estilos.textoCard}> {producto.stock} unidades</span>
                     </Typography>
                     <CardActions style={estilos.cardAction}>
                         <>
@@ -93,7 +96,7 @@ export const ItemDetail = ({ producto }) => {
 
                                 :
                                 <>
-                                    <ItemQuantitySelector />
+                                    <ItemQuantitySelector stock={producto.stock} />
                                     <Button size="medium" color="primary" variant="contained"
                                         onClick={() => cantidad > 0 ? addItem() : alert("La cantidad elegida debe ser mayor a cero \n para agregar al carrito")}>Agregar al carrito</Button>
                                 </>

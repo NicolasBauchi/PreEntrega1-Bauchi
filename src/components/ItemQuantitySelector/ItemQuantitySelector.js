@@ -1,20 +1,17 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { Button } from "@mui/material";
 import { ElContexto } from "../Context/ContextApp";
 
 
-export default function ItemQuantitySelector() {
+export default function ItemQuantitySelector({ stock }) {
     const { cantidad, setCantidad } = useContext(ElContexto);
 
     function cantidadProd(operacion) {
-        if (operacion === '+') {
+        if (operacion === '+' && cantidad < Number(stock)) {
             setCantidad(cantidad + 1);
 
-        } else {
-            if (cantidad !== 0) {
-                setCantidad(cantidad - 1);
-            }
-
+        } else if (operacion === '-' && cantidad !== 0) {
+            setCantidad(cantidad - 1);
         }
     }
     const estilo = {
