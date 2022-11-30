@@ -15,7 +15,6 @@ export const ItemDetail = ({ producto }) => {
     const { agregarCarrito, cantidad } = useContext(ElContexto);
 
     const addItem = () => {
-        alert("Producto agregado al carrito!");
         agregarCarrito(producto, cantidad);
     };
 

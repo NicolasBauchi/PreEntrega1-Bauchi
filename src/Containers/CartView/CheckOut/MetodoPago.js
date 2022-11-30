@@ -8,7 +8,7 @@ import { addDoc, collection, getFirestore } from 'firebase/firestore';
 
 export const MetodoPago = () => {
 
-    const { buyer, montoTotal, carrito } = useContext(ElContexto);
+    const { buyer, montoTotal, carrito, vaciarCarrito } = useContext(ElContexto);
 
 
     var nombreTarjeta = "";
@@ -32,23 +32,47 @@ export const MetodoPago = () => {
 
     function finalizarCompra() {
 
-        const datos = { nombreTarjeta, numeroTarjeta, fecha, cvv };
+        /* Método para revisar campos completos */
+        let camposCompletosMP = false;
 
-        const ordenDeCompra = {
-            comprador: { ...buyer },
-            items: [...carrito],
-            total: montoTotal,
-            datosPago: { ...datos }
-        };
-        const db = getFirestore();
-        const ordersCollection = collection(db, "ordenes");
-        /* const realizado =  */
-        addDoc(ordersCollection, ordenDeCompra).then(({ id }) => {
+        let datosFormMP = [
+            nombreTarjeta,
+            numeroTarjeta,
+            fecha,
+            cvv
+        ]
 
-            console.log("terminó proceso de compra -> " + id);
-            alert("Se realizó la compra con el ID:  " + id);
-
+        let cont = 0;
+        datosFormMP.forEach(el => {
+            if (el == "") {
+                cont++;
+            }
         });
+
+        cont == 0 ? camposCompletosMP = true : camposCompletosMP = false;
+        /* Fin comprobación campos. */
+
+
+        if (camposCompletosMP == true) {
+            const datos = { nombreTarjeta, numeroTarjeta, fecha, cvv };
+
+            const ordenDeCompra = {
+                comprador: { ...buyer },
+                items: [...carrito],
+                total: montoTotal,
+                datosPago: { ...datos }
+            };
+            const db = getFirestore();
+            const ordersCollection = collection(db, "ordenes");
+            /* const realizado =  */
+            addDoc(ordersCollection, ordenDeCompra).then(({ id }) => {
+                alert("Se realizó la compra con el ID:  " + id);
+            });
+
+            vaciarCarrito();
+        } else {
+            alert("Campos incompletos.");
+        }
 
     }
 

@@ -14,10 +14,6 @@ export const ItemDetailContainer = () => {
         const getProductos = async () => {
             const db = getFirestore();
 
-            /* codigo conexion a FakestoreApi
-            const URL = 'https://fakestoreapi.com/products/';
-            const URL_ID = URL + id; */
-
             try {
                 const docBuscar = doc(collection(db, "productos"), id);
 
@@ -30,21 +26,6 @@ export const ItemDetailContainer = () => {
             } finally {
                 setCarga(false);
             }
-
-
-            /*codigo conexion a FakestoreApi
-              const URL = 'https://fakestoreapi.com/products/';
-             const URL_ID = URL + id;
-             try {
-                 const resultado = await fetch(id ? URL_ID : URL);
-                 const datos = await resultado.json();
-                 setProducto(datos);
- 
-             } catch (error) {
-                 console.log(error);
-             } finally {
-                 setCarga(false);
-             } */
         }
         getProductos();
 

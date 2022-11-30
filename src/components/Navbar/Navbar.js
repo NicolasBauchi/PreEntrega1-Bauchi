@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import logo from "../../store-512.png";
 import { estilos } from "./Navbar.estilos";
 import { CartWidget } from "./CartWidget";
@@ -10,6 +10,7 @@ correspondiente al componente */
 const Navbar = () => {
 
   const { cantProd } = useContext(ElContexto);
+  /* const [number, setNumber] = useState(cantProd); */
 
   const estiloCart = {
     number: {
