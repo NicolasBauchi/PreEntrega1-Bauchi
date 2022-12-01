@@ -3,7 +3,7 @@ import Paper from "@mui/material/Paper";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { ElContexto } from '../../../components/Context/ContextApp';
-import { addDoc, collection, getFirestore } from 'firebase/firestore';
+import { addDoc, collection, getFirestore, doc, updateDoc } from 'firebase/firestore';
 
 
 export const MetodoPago = () => {
@@ -54,22 +54,51 @@ export const MetodoPago = () => {
 
 
         if (camposCompletosMP == true) {
-            const datos = { nombreTarjeta, numeroTarjeta, fecha, cvv };
+            /* Quitar propiedad stock de cada item */
+            let cartCopia = [...carrito];
+            let cartNuevo = [];
+            let exito = false;
 
-            const ordenDeCompra = {
-                comprador: { ...buyer },
-                items: [...carrito],
-                total: montoTotal,
-                datosPago: { ...datos }
-            };
-            const db = getFirestore();
-            const ordersCollection = collection(db, "ordenes");
-            
-            addDoc(ordersCollection, ordenDeCompra).then(({ id }) => {
-                alert("Se realizó la compra con el ID:  " + id);
+            cartCopia.forEach(element => {
+                let resultado = delete (element.stock);
+
+                if (resultado == true) {
+                    cartNuevo.push(element);
+                }
             });
 
-            vaciarCarrito();
+            if (cartCopia.length == cartNuevo.length) {
+                exito = true;
+            }
+            /* FIN - Quitar propiedad stock de cada item */
+
+            /* Procedo solo si salio todo bien. */
+            if (exito == true) {
+
+                const datos = { nombreTarjeta, numeroTarjeta, fecha, cvv };
+
+                const ordenDeCompra = {
+                    comprador: { ...buyer },
+                    items: [...cartNuevo],
+                    /* items: [...carrito], */
+                    total: montoTotal,
+                    datosPago: { ...datos }
+                };
+                const db = getFirestore();
+                const ordersCollection = collection(db, "ordenes");
+
+                addDoc(ordersCollection, ordenDeCompra).then(({ id }) => {
+                    alert("Se realizó la compra con el ID:  " + id);
+                });
+
+
+                /* Vaciar carrito de compras */
+                vaciarCarrito();
+
+            }
+
+
+
         } else {
             alert("Campos incompletos.");
         }
